@@ -10,22 +10,35 @@ import SwiftUI
 
 @main
 struct FlavorFactoryApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    let modelContainer: ModelContainer
 
+    init() {
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            // Configure SwiftData with CloudKit
+            let schema = Schema([
+                Recipe.self,
+                Step.self,
+                Ingredient.self,
+            ])
+
+            let modelConfiguration = ModelConfiguration(
+                schema: schema,
+                cloudKitDatabase: .automatic
+            )
+
+            modelContainer = try ModelContainer(
+                for: schema,
+                configurations: [modelConfiguration]
+            )
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
-    }()
+    }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(modelContainer)
     }
 }
