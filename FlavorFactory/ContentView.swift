@@ -5,19 +5,28 @@
 //  Created by Benedikt Hruschka on 30.05.25.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedRecipe: Recipe?
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     var body: some View {
-        VStack {
-            Image(systemName: "fork.knife")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, FlavorFactory!")
+        NavigationSplitView {
+            RecipeListView(selection: $selectedRecipe)
+        } detail: {
+            if let recipe = selectedRecipe {
+                RecipeDetailView(recipe: recipe)
+            } else {
+                Text("Wähle ein Rezept aus")
+                    .navigationTitle("Rezept")
+            }
         }
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(PreviewData.shared.modelContainer)
 }
