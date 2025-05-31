@@ -11,6 +11,16 @@ struct FFStepCard: View {
                     .foregroundStyle(.orange)
                 Spacer()
             }
+            // Bild anzeigen, falls vorhanden (nur iOS)
+            #if canImport(UIKit)
+                if let imageData = step.image, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipped()
+                        .cornerRadius(8)
+                }
+            #endif
             Text(step.text)
                 .font(.body)
                 .foregroundStyle(.primary)
@@ -32,6 +42,7 @@ struct FFStepCard: View {
 #Preview {
     FFStepCard(step: Step(
         text: "Pasta in Salzwasser kochen",
+        image: UIImage(named: "step_1")?.pngData(),
         order: 1,
         ingredients: [
             Ingredient(title: "Spaghetti", amount: 500, unit: .gram),

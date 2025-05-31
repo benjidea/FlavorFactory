@@ -7,7 +7,7 @@ final class Step {
     // MARK: - Properties
 
     var text: String = ""
-    var image: String?
+    var image: Data?
     var order: Int = 0
 
     // MARK: - Relationships
@@ -19,7 +19,7 @@ final class Step {
 
     init(
         text: String = "",
-        image: String? = nil,
+        image: Data? = nil,
         order: Int = 0,
         ingredients: [Ingredient]? = [],
         recipe: Recipe? = nil
