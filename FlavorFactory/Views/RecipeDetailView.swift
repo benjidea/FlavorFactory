@@ -4,11 +4,11 @@ import SwiftUI
 struct RecipeDetailView: View {
     let recipe: Recipe
     @Environment(\.modelContext) private var modelContext
+    @State private var preparedDTO: RecipeDTO?
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                // Header
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .top) {
                         FFTitle(text: recipe.title)
@@ -29,7 +29,6 @@ struct RecipeDetailView: View {
                         }
                     }
                 }
-                // Time Information
                 if let prepTime = recipe.preparationTime,
                    let cookTime = recipe.cookingTime
                 {
@@ -39,11 +38,9 @@ struct RecipeDetailView: View {
                         FFTimeInfo(title: "Gesamt", time: prepTime + cookTime)
                     }
                 }
-                // Tags
                 if !recipe.tags.isEmpty {
                     FFTagList(tags: recipe.tags)
                 }
-                // Steps
                 if let steps = recipe.steps, !steps.isEmpty {
                     VStack(alignment: .leading, spacing: 20) {
                         FFSectionHeader(text: "Zubereitung")
@@ -52,7 +49,6 @@ struct RecipeDetailView: View {
                         }
                     }
                 }
-                // Notes
                 if let notes = recipe.notes, !notes.isEmpty {
                     FFNotesBox(notes: notes)
                 }
@@ -60,6 +56,25 @@ struct RecipeDetailView: View {
             .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                if let dto = preparedDTO {
+                    ShareLink(
+                        item: dto,
+                        preview: SharePreview(
+                            "\(recipe.title).json",
+                            image: Image(systemName: "doc.text")
+                        )
+                    )
+                } else {
+                    ProgressView()
+                        .controlSize(.small)
+                }
+            }
+        }
+        .task {
+            preparedDTO = recipe.toDTO(includeImages: true)
+        }
     }
 
     private func toggleFavorite() {

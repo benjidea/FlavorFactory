@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 struct IngredientDTO: Codable {
     let title: String
@@ -14,7 +15,7 @@ struct StepDTO: Codable {
     let ingredients: [IngredientDTO]
 }
 
-struct RecipeDTO: Codable {
+struct RecipeDTO: Codable, Transferable {
     let title: String
     let course: String
     let dietaryType: String
@@ -32,10 +33,14 @@ struct RecipeDTO: Codable {
     let preparationTime: Int?
     let cookingTime: Int?
     let steps: [StepDTO]
+
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(contentType: .json)
+    }
 }
 
 extension Recipe {
-    func toDTO() -> RecipeDTO {
+    func toDTO(includeImages: Bool = false) -> RecipeDTO {
         RecipeDTO(
             title: title,
             course: course.rawValue,
@@ -53,16 +58,16 @@ extension Recipe {
             difficulty: difficulty?.rawValue,
             preparationTime: preparationTime,
             cookingTime: cookingTime,
-            steps: (steps ?? []).map { $0.toDTO() }
+            steps: (steps ?? []).map { $0.toDTO(includeImages: includeImages) }
         )
     }
 }
 
 extension Step {
-    func toDTO() -> StepDTO {
+    func toDTO(includeImages: Bool = false) -> StepDTO {
         StepDTO(
             text: text,
-            image: image?.base64EncodedString(),
+            image: includeImages ? image?.base64EncodedString() : nil,
             order: order,
             ingredients: (ingredients ?? []).map { $0.toDTO() }
         )
