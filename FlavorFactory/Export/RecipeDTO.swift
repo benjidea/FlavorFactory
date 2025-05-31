@@ -1,4 +1,5 @@
 import Foundation
+import SwiftData
 import SwiftUI
 
 struct IngredientDTO: Codable {
@@ -81,6 +82,56 @@ extension Ingredient {
             amount: amount,
             unit: unit?.rawValue,
             available: available
+        )
+    }
+}
+
+extension RecipeDTO {
+    func toModel(context: ModelContext) -> Recipe {
+        let recipe = Recipe(
+            title: title,
+            course: Course(rawValue: course) ?? .main,
+            dietaryType: DietaryType(rawValue: dietaryType) ?? .omnivore,
+            portions: portions,
+            rating: rating,
+            creationDate: ISO8601DateFormatter().date(from: creationDate) ?? .now,
+            lastModifiedDate: ISO8601DateFormatter().date(from: lastModifiedDate) ?? .now,
+            lastCookedDate: lastCookedDate != nil ? ISO8601DateFormatter().date(from: lastCookedDate!) : nil,
+            cookingHistory: cookingHistory.compactMap { ISO8601DateFormatter().date(from: $0) },
+            notes: notes,
+            tags: tags,
+            isFavorite: isFavorite,
+            source: source,
+            difficulty: difficulty != nil ? RecipeDifficulty(rawValue: difficulty!) : nil,
+            preparationTime: preparationTime,
+            cookingTime: cookingTime
+        )
+        let steps = self.steps.map { $0.toModel(context: context) }
+        recipe.steps = steps
+        return recipe
+    }
+}
+
+extension StepDTO {
+    func toModel(context: ModelContext) -> Step {
+        let step = Step(
+            text: text,
+            image: image != nil ? Data(base64Encoded: image!) : nil,
+            order: order
+        )
+        let ingredients = self.ingredients.map { $0.toModel(context: context) }
+        step.ingredients = ingredients
+        return step
+    }
+}
+
+extension IngredientDTO {
+    func toModel(context _: ModelContext) -> Ingredient {
+        Ingredient(
+            title: title,
+            amount: amount,
+            unit: unit != nil ? IngredientUnit(rawValue: unit!) : nil,
+            available: available ?? false
         )
     }
 }
