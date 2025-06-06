@@ -17,7 +17,7 @@ struct RecipeRowView: View {
                     }
                 }
                 if !recipe.tags.isEmpty {
-                    FFTagList(tags: Array(recipe.tags.prefix(2)))
+                    FFTagList(tags: Array(recipe.tags.prefix(2)), layout: .flow)
                 }
             }
             Spacer()
