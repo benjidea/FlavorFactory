@@ -25,5 +25,5 @@ struct FFIngredientRow: View {
         FFIngredientRow(ingredient: Ingredient(title: "Salz", amount: 1, unit: .tablespoon))
         FFIngredientRow(ingredient: Ingredient(title: "Eier", amount: 4, unit: .piece))
     }
-    .padding()
+    .padding(Spacing.md)
 }

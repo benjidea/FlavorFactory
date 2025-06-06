@@ -5,10 +5,10 @@ struct RecipeRowView: View {
 
     var body: some View {
         HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Spacing.xs) {
                 FFH3(text: recipe.title)
                     .font(.headline)
-                HStack(spacing: 8) {
+                HStack(spacing: Spacing.sm) {
                     FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
                     FFIconLabel(systemImage: "leaf", text: recipe.dietaryType.rawValue)
                     if recipe.isFavorite {
@@ -27,11 +27,11 @@ struct RecipeRowView: View {
                     .foregroundStyle(.orange)
             }
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, Spacing.xs)
     }
 }
 
 #Preview {
     RecipeRowView(recipe: .preview)
-        .padding()
+        .padding(Spacing.md)
 }

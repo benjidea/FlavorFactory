@@ -5,8 +5,8 @@ struct FFTag: View {
     var body: some View {
         Text(text)
             .font(.caption)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 4)
+            .padding(.horizontal, Spacing.md)
+            .padding(.vertical, Spacing.xs)
             .background(Color.secondary.opacity(0.15))
             .clipShape(Capsule())
     }

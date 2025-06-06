@@ -20,5 +20,5 @@ struct FFIconLabel: View {
         FFIconLabel(systemImage: "leaf", text: "Vegan")
         FFIconLabel(systemImage: "chart.bar", text: "medium")
     }
-    .padding()
+    .padding(Spacing.md)
 }

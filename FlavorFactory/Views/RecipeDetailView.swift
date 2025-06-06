@@ -8,8 +8,8 @@ struct RecipeDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: Spacing.lg) {
+                VStack(alignment: .leading, spacing: Spacing.sm) {
                     HStack(alignment: .top) {
                         FFTitle(text: recipe.title)
                         Spacer()
@@ -19,7 +19,7 @@ struct RecipeDetailView: View {
                                 .font(.title2)
                         }
                     }
-                    HStack(spacing: 8) {
+                    HStack(spacing: Spacing.sm) {
                         FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
                         Text("•")
                         FFIconLabel(systemImage: "leaf", text: recipe.dietaryType.rawValue)
@@ -32,7 +32,7 @@ struct RecipeDetailView: View {
                 if let prepTime = recipe.preparationTime,
                    let cookTime = recipe.cookingTime
                 {
-                    HStack(spacing: 24) {
+                    HStack(spacing: Spacing.lg) {
                         FFTimeInfo(title: "Zubereitung", time: prepTime)
                         FFTimeInfo(title: "Kochzeit", time: cookTime)
                         FFTimeInfo(title: "Gesamt", time: prepTime + cookTime)
@@ -42,7 +42,7 @@ struct RecipeDetailView: View {
                     FFTagList(tags: recipe.tags)
                 }
                 if let steps = recipe.steps, !steps.isEmpty {
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: Spacing.md) {
                         FFSectionHeader(text: "Zubereitung")
                         ForEach(steps.sorted(by: { $0.order < $1.order })) { step in
                             FFStepCard(step: step)
@@ -53,7 +53,7 @@ struct RecipeDetailView: View {
                     FFNotesBox(notes: notes)
                 }
             }
-            .padding()
+            .padding(Spacing.md)
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

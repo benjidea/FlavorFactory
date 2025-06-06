@@ -30,10 +30,10 @@ struct FFStepCard: View {
                         FFIngredientRow(ingredient: ingredient)
                     }
                 }
-                .padding(.leading, 4)
+                .padding(.leading, Spacing.xs)
             }
         }
-        .padding()
+        .padding(Spacing.md)
         .background(Color.secondary.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
@@ -49,5 +49,5 @@ struct FFStepCard: View {
             Ingredient(title: "Salz", amount: 1, unit: .tablespoon),
         ]
     ))
-    .padding()
+    .padding(Spacing.md)
 }

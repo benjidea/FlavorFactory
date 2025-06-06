@@ -16,5 +16,5 @@ struct FFTagList: View {
 
 #Preview {
     FFTagList(tags: ["Pasta", "Italienisch", "Schnell"])
-        .padding()
+        .padding(Spacing.md)
 }

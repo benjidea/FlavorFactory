@@ -6,11 +6,11 @@ struct FFSectionHeader: View {
         Text(text)
             .font(.title3)
             .bold()
-            .padding(.bottom, 2)
+            .padding(.bottom, Spacing.xs)
     }
 }
 
 #Preview {
     FFSectionHeader(text: "Zubereitung")
-        .padding()
+        .padding(Spacing.md)
 }
