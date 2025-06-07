@@ -34,6 +34,7 @@ struct RecipeDTO: Codable, Transferable {
     let preparationTime: Int?
     let cookingTime: Int?
     let steps: [StepDTO]
+    let coverImage: String?
 
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation(contentType: .json)
@@ -59,7 +60,8 @@ extension Recipe {
             difficulty: difficulty?.rawValue,
             preparationTime: preparationTime,
             cookingTime: cookingTime,
-            steps: (steps ?? []).map { $0.toDTO(includeImages: includeImages) }
+            steps: (steps ?? []).map { $0.toDTO(includeImages: includeImages) },
+            coverImage: includeImages ? coverImage?.base64EncodedString() : nil
         )
     }
 }
@@ -104,7 +106,8 @@ extension RecipeDTO {
             source: source,
             difficulty: difficulty != nil ? RecipeDifficulty(rawValue: difficulty!) : nil,
             preparationTime: preparationTime,
-            cookingTime: cookingTime
+            cookingTime: cookingTime,
+            coverImage: coverImage != nil ? Data(base64Encoded: coverImage!) : nil
         )
         let steps = self.steps.map { $0.toModel(context: context) }
         recipe.steps = steps

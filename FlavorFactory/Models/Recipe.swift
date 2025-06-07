@@ -33,6 +33,11 @@ final class Recipe {
 
     @Relationship(deleteRule: .cascade) var steps: [Step]? = []
 
+    // MARK: - Cover Image
+
+    /// The cover image for the recipe (optional, stored as Data)
+    var coverImage: Data?
+
     // MARK: - Initialization
 
     init(
@@ -52,7 +57,8 @@ final class Recipe {
         difficulty: RecipeDifficulty? = nil,
         preparationTime: Int? = nil,
         cookingTime: Int? = nil,
-        steps: [Step]? = []
+        steps: [Step]? = [],
+        coverImage: Data? = nil
     ) {
         self.title = title
         self.course = course
@@ -71,6 +77,7 @@ final class Recipe {
         self.preparationTime = preparationTime
         self.cookingTime = cookingTime
         self.steps = steps
+        self.coverImage = coverImage
     }
 }
 

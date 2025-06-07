@@ -1,14 +1,16 @@
 //
-//  FlavorFactoryTests.swift
+//  RecipeDTOTests.swift
 //  FlavorFactoryTests
 //
 //  Created by Benedikt Hruschka on 30.05.25.
 //
 
 @testable import FlavorFactory
+import Foundation
+import SwiftData
 import Testing
 
-struct FlavorFactoryTests {
+struct RecipeDTOTests {
     @Test("Recipe DTO Konvertierung") func recipeDTOConversion() async throws {
         // Arrange
         let recipe = Recipe(
@@ -37,7 +39,7 @@ struct FlavorFactoryTests {
         recipe.steps = [step]
 
         // Act
-        let dto = recipe.toDTO()
+        let dto = recipe.toDTO(includeImages: true)
 
         // Assert
         #expect(dto.title == "Test Rezept")
@@ -92,5 +94,32 @@ struct FlavorFactoryTests {
         #expect(dto.preparationTime == nil)
         #expect(dto.cookingTime == nil)
         #expect(dto.steps.isEmpty)
+    }
+
+    @Test("Recipe DTO mit Titelbild") func recipeDTOWithCoverImage() async throws {
+        // Arrange
+        guard let url = Bundle(for: TestBundleClass.self).url(forResource: "TestImage", withExtension: "jpg"),
+              let imageData = try? Data(contentsOf: url)
+        else {
+            #expect(Bool(false), "TestImage.jpg konnte nicht geladen werden")
+            return
+        }
+        let recipe = Recipe(
+            title: "Rezept mit Bild",
+            course: .main,
+            dietaryType: .omnivore,
+            portions: 2,
+            coverImage: imageData
+        )
+        // Act
+        let dto = recipe.toDTO(includeImages: true)
+        // Assert
+        #expect(dto.coverImage != nil)
+        #expect(Data(base64Encoded: dto.coverImage!) == imageData)
+
+        let container = try! ModelContainer(for: Recipe.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        let context = ModelContext(container)
+        let model = dto.toModel(context: context)
+        #expect(model.coverImage == imageData)
     }
 }
