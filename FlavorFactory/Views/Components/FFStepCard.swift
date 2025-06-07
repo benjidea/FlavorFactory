@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FFStepCard: View {
     let step: Step
+    var scaleFactor: Double = 1.0
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 8) {
@@ -27,7 +28,7 @@ struct FFStepCard: View {
             if let ingredients = step.ingredients, !ingredients.isEmpty {
                 VStack(alignment: .leading, spacing: 2) {
                     ForEach(ingredients) { ingredient in
-                        FFIngredientRow(ingredient: ingredient)
+                        FFStepIngredientRow(ingredient: ingredient, scaleFactor: scaleFactor)
                     }
                 }
                 .padding(.leading, Spacing.xs)
@@ -48,6 +49,6 @@ struct FFStepCard: View {
             Ingredient(title: "Spaghetti", amount: 500, unit: .gram),
             Ingredient(title: "Salz", amount: 1, unit: .tablespoon),
         ]
-    ))
-    .padding(Spacing.md)
+    ), scaleFactor: 1.5)
+        .padding(Spacing.md)
 }

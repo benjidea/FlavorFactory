@@ -101,3 +101,29 @@ enum RecipeDifficulty: String, Codable {
     case medium
     case hard
 }
+
+extension Recipe {
+    var uniqueIngredients: [Ingredient] {
+        guard let steps = steps else { return [] }
+        let allIngredients = steps.flatMap { $0.ingredients ?? [] }
+
+        // Group ingredients by title and aggregate amounts
+        let groupedIngredients = Dictionary(grouping: allIngredients) { $0.title }
+        return groupedIngredients.map { title, ingredients in
+            let totalAmount = ingredients.reduce(0) { $0 + ($1.amount) }
+            let firstIngredient = ingredients[0]
+            return Ingredient(
+                title: title,
+                amount: totalAmount,
+                unit: firstIngredient.unit
+            )
+        }.sorted { (ingredient1: Ingredient, ingredient2: Ingredient) in
+            // First sort by availability (unavailable first)
+            if ingredient1.available != ingredient2.available {
+                return !ingredient1.available
+            }
+            // Then alphabetically
+            return ingredient1.title.localizedCaseInsensitiveCompare(ingredient2.title) == .orderedAscending
+        }
+    }
+}

@@ -202,7 +202,7 @@ import SwiftData
                 order: 1,
                 ingredients: [
                     Ingredient(title: "Spaghetti", amount: 500, unit: .gram),
-                    Ingredient(title: "Salz", amount: 1, unit: .tablespoon),
+                    Ingredient(title: "Salz", amount: 1, unit: .tablespoon, available: true),
                 ]
             )
 
@@ -222,7 +222,8 @@ import SwiftData
                 ingredients: [
                     Ingredient(title: "Eier", amount: 4, unit: .piece),
                     Ingredient(title: "Parmesan", amount: 100, unit: .gram),
-                    Ingredient(title: "Pfeffer", amount: 1, unit: .teaspoon),
+                    Ingredient(title: "Pfeffer", amount: 1, unit: .teaspoon, available: true),
+                    Ingredient(title: "Salz", amount: 1, unit: .tablespoon, available: true),
                 ]
             )
 
