@@ -10,7 +10,6 @@ struct FFIconLabel: View {
             Text(text)
         }
         .font(.caption)
-        .foregroundStyle(.secondary)
     }
 }
 

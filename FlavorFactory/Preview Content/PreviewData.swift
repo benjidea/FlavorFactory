@@ -193,7 +193,8 @@ import SwiftData
                 isFavorite: true,
                 difficulty: .medium,
                 preparationTime: 15,
-                cookingTime: 20
+                cookingTime: 20,
+                coverImage: UIImage(named: "cover")?.pngData()
             )
 
             let step1 = Step(
