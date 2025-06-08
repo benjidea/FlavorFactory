@@ -68,8 +68,10 @@ struct CoverImageHeader: View {
             HStack(spacing: iconSpacing) {
                 FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
                     .foregroundStyle(.white)
-                FFIconLabel(systemImage: "leaf", text: recipe.diet.rawValue)
-                    .foregroundStyle(.white)
+                HStack(spacing: Spacing.xs) {
+                    FFDietIconLabel(diet: recipe.diet)
+                        .foregroundStyle(.white)
+                }
                 if let difficulty = recipe.difficulty {
                     FFIconLabel(systemImage: "chart.bar", text: difficulty.rawValue)
                         .foregroundStyle(.white)

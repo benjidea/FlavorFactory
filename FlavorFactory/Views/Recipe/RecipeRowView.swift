@@ -10,7 +10,9 @@ struct RecipeRowView: View {
                     .font(.headline)
                 HStack(spacing: Spacing.sm) {
                     FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
-                    FFIconLabel(systemImage: "leaf", text: recipe.diet.rawValue)
+                    HStack(spacing: Spacing.xs) {
+                        FFDietIconLabel(diet: recipe.diet)
+                    }
                     if recipe.isFavorite {
                         Image(systemName: "star.fill")
                             .foregroundStyle(.yellow)

@@ -96,7 +96,7 @@ enum Course: String, Codable {
 }
 
 /// Represents the dietary type of a recipe
-enum Diet: String, Codable {
+enum Diet: String, Codable, CaseIterable {
     case beef
     case fish
     case lamb
