@@ -7,7 +7,7 @@ struct RecipeStepsSection: View {
 
     var body: some View {
         if let steps = recipe.steps, !steps.isEmpty {
-            VStack(alignment: .leading, spacing: Spacing.md) {
+            VStack(alignment: .leading, spacing: Spacing.size3) {
                 FFSectionHeader(text: "Zubereitung")
                 ForEach(steps.sorted(by: { $0.order < $1.order })) { step in
                     FFStepCard(step: step, scaleFactor: scaleFactor)

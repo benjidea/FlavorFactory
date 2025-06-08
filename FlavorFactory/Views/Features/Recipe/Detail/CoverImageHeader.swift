@@ -15,11 +15,11 @@ struct CoverImageHeader: View {
     private let imageHeight: CGFloat = 280
     private let gradientEnd: CGFloat = 0.55
     private let gradientColor = Color(.sRGB, red: 0.12, green: 0.12, blue: 0.16, opacity: 0.75)
-    private let textPaddingHorizontal: CGFloat = Spacing.md
-    private let textPaddingBottom: CGFloat = Spacing.lg
-    private let textShadowRadius: CGFloat = Spacing.xs
-    private let iconSpacing: CGFloat = Spacing.md
-    private let textSpacing: CGFloat = Spacing.sm
+    private let textPaddingHorizontal: CGFloat = Spacing.size3
+    private let textPaddingBottom: CGFloat = Spacing.size4
+    private let textShadowRadius: CGFloat = Spacing.size1
+    private let iconSpacing: CGFloat = Spacing.size3
+    private let textSpacing: CGFloat = Spacing.size2
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -68,7 +68,7 @@ struct CoverImageHeader: View {
             HStack(spacing: iconSpacing) {
                 FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
                     .foregroundStyle(.white)
-                HStack(spacing: Spacing.xs) {
+                HStack(spacing: Spacing.size1) {
                     FFDietIconLabel(diet: recipe.diet)
                         .foregroundStyle(.white)
                 }

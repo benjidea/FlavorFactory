@@ -20,7 +20,7 @@ struct RecipeDetailView: View {
         ScrollView {
             VStack {
                 CoverImageHeader(recipe: recipe)
-                VStack(alignment: .leading, spacing: Spacing.lg) {
+                VStack(alignment: .leading, spacing: Spacing.size4) {
                     RecipeTimeInfoSection(
                         recipe: recipe,
                         onFavoriteToggle: toggleFavorite
@@ -47,7 +47,7 @@ struct RecipeDetailView: View {
                         FFNotesBox(notes: notes)
                     }
                 }
-                .padding(Spacing.md)
+                .padding(Spacing.size3)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

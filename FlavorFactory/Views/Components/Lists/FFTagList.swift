@@ -6,35 +6,35 @@ struct FFTagList: View {
 
     enum LayoutStyle {
         case flow
-        case scroll(horizontalInset: CGFloat = Spacing.sm)
+        case scroll(horizontalInset: CGFloat = Spacing.size2)
     }
 
     var body: some View {
         switch layout {
         case .flow:
-            TagWrapLayout(spacing: Spacing.sm) {
+            TagWrapLayout(spacing: Spacing.size2) {
                 ForEach(tags, id: \.self) { tag in
                     FFTag(text: tag)
                 }
             }
-            .padding(.vertical, Spacing.xs)
+            .padding(.vertical, Spacing.size1)
         case let .scroll(horizontalInset):
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: Spacing.sm) {
+                HStack(spacing: Spacing.size2) {
                     Spacer(minLength: horizontalInset)
                     ForEach(tags, id: \.self) { tag in
                         FFTag(text: tag)
                     }
                     Spacer(minLength: horizontalInset)
                 }
-                .padding(.vertical, Spacing.xs)
+                .padding(.vertical, Spacing.size1)
             }
         }
     }
 }
 
 struct TagWrapLayout: Layout {
-    var spacing: CGFloat = Spacing.sm
+    var spacing: CGFloat = Spacing.size2
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache _: inout ()) -> CGSize {
         var width: CGFloat = 0
         var height: CGFloat = 0
@@ -73,13 +73,13 @@ struct TagWrapLayout: Layout {
 }
 
 #Preview {
-    VStack(alignment: .leading, spacing: Spacing.md) {
+    VStack(alignment: .leading, spacing: Spacing.size3) {
         Text("Flow Layout (Wrapping):")
         FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .flow)
         Text("Scroll Layout (Horizontal, default Inset):")
         FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .scroll())
         Text("Scroll Layout (Horizontal, large Inset):")
-        FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .scroll(horizontalInset: Spacing.lg))
+        FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .scroll(horizontalInset: Spacing.size4))
     }
-    .padding(Spacing.md)
+    .padding(Spacing.size3)
 }

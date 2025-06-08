@@ -36,5 +36,5 @@ struct FFIngredientRow: View {
         FFIngredientRow(ingredient: Ingredient(title: "Salz", amount: 1, unit: .tablespoon))
         FFIngredientRow(ingredient: Ingredient(title: "Eier", amount: 3.5, unit: .piece))
     }
-    .padding(Spacing.md)
+    .padding(Spacing.size3)
 }

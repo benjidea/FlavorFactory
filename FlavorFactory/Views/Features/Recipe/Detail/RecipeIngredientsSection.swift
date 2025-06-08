@@ -10,11 +10,11 @@ struct RecipeIngredientsSection: View {
 
     var body: some View {
         if !recipe.uniqueIngredients.isEmpty {
-            VStack(alignment: .leading, spacing: Spacing.md) {
+            VStack(alignment: .leading, spacing: Spacing.size3) {
                 HStack {
                     FFSectionHeader(text: "Zutaten")
                     Spacer()
-                    HStack(spacing: Spacing.sm) {
+                    HStack(spacing: Spacing.size2) {
                         Button(action: onPortionsDecrease) {
                             Image(systemName: "minus.circle.fill")
                                 .foregroundStyle(.gray)

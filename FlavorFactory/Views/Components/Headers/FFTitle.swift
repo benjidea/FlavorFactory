@@ -12,5 +12,5 @@ struct FFTitle: View {
 
 #Preview {
     FFTitle(text: "Pasta Carbonara mit extra langem Namen für den Test")
-        .padding(Spacing.md)
+        .padding(Spacing.size3)
 }

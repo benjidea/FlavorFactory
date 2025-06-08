@@ -9,7 +9,7 @@ struct RecipeTimeInfoSection: View {
         if let prepTime = recipe.preparationTime,
            let cookTime = recipe.cookingTime
         {
-            HStack(spacing: Spacing.lg) {
+            HStack(spacing: Spacing.size4) {
                 FFTimeInfo(title: "Zubereitung", time: prepTime)
                 FFTimeInfo(title: "Kochzeit", time: cookTime)
                 FFTimeInfo(title: "Gesamt", time: prepTime + cookTime)

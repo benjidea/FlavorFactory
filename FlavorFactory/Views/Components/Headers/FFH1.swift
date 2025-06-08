@@ -12,5 +12,5 @@ struct FFH1: View {
 
 #Preview {
     FFH1(text: "Pasta Carbonara mit extra langem Namen für den Test")
-        .padding(Spacing.md)
+        .padding(Spacing.size3)
 }

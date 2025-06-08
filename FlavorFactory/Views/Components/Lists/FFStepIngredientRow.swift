@@ -37,5 +37,5 @@ struct FFStepIngredientRow: View {
         FFStepIngredientRow(ingredient: Ingredient(title: "Salz", amount: 1, unit: .tablespoon), scaleFactor: 2.0)
         FFStepIngredientRow(ingredient: Ingredient(title: "Eier", amount: 3, unit: .piece), scaleFactor: 0.5)
     }
-    .padding(Spacing.md)
+    .padding(Spacing.size3)
 }
