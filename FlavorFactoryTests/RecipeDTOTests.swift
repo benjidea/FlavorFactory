@@ -16,7 +16,7 @@ struct RecipeDTOTests {
         let recipe = Recipe(
             title: "Test Rezept",
             course: .main,
-            dietaryType: .vegetarian,
+            diet: .vegetarian,
             portions: 4,
             rating: 4.5,
             notes: "Test Notizen",
@@ -44,7 +44,7 @@ struct RecipeDTOTests {
         // Assert
         #expect(dto.title == "Test Rezept")
         #expect(dto.course == "main")
-        #expect(dto.dietaryType == "vegetarian")
+        #expect(dto.diet == "vegetarian")
         #expect(dto.portions == 4)
         #expect(dto.rating == 4.5)
         #expect(dto.notes == "Test Notizen")
@@ -74,7 +74,7 @@ struct RecipeDTOTests {
         let recipe = Recipe(
             title: "Minimal Rezept",
             course: .main,
-            dietaryType: .omnivore,
+            diet: .beef,
             portions: 1
         )
 
@@ -84,7 +84,7 @@ struct RecipeDTOTests {
         // Assert
         #expect(dto.title == "Minimal Rezept")
         #expect(dto.course == "main")
-        #expect(dto.dietaryType == "omnivore")
+        #expect(dto.diet == "beef")
         #expect(dto.portions == 1)
         #expect(dto.rating == nil)
         #expect(dto.notes == nil)
@@ -107,7 +107,7 @@ struct RecipeDTOTests {
         let recipe = Recipe(
             title: "Rezept mit Bild",
             course: .main,
-            dietaryType: .omnivore,
+            diet: .beef,
             portions: 2,
             coverImage: imageData
         )

@@ -61,7 +61,7 @@ import SwiftData
             let carbonara = Recipe(
                 title: "Pasta Carbonara",
                 course: .main,
-                dietaryType: .omnivore,
+                diet: .beef,
                 portions: 4,
                 rating: 4.5,
                 notes: "Traditionelles italienisches Rezept",
@@ -109,7 +109,7 @@ import SwiftData
             let buddhaBowl = Recipe(
                 title: "Vegane Buddha Bowl",
                 course: .main,
-                dietaryType: .vegan,
+                diet: .vegan,
                 portions: 2,
                 rating: 4.0,
                 notes: "Gesund und nahrhaft",
@@ -146,7 +146,7 @@ import SwiftData
             let cake = Recipe(
                 title: "Schokoladenkuchen",
                 course: .dessert,
-                dietaryType: .omnivore,
+                diet: .vegetarian,
                 portions: 8,
                 rating: 5.0,
                 notes: "Super saftig und schokoladig",
@@ -185,7 +185,7 @@ import SwiftData
             let recipe = Recipe(
                 title: "Pasta Carbonara",
                 course: .main,
-                dietaryType: .omnivore,
+                diet: .beef,
                 portions: 4,
                 rating: 4.5,
                 notes: "Traditionelles italienisches Rezept",

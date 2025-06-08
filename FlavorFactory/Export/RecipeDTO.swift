@@ -19,7 +19,7 @@ struct StepDTO: Codable {
 struct RecipeDTO: Codable, Transferable {
     let title: String
     let course: String
-    let dietaryType: String
+    let diet: String
     let portions: Int
     let rating: Double?
     let creationDate: String
@@ -46,7 +46,7 @@ extension Recipe {
         RecipeDTO(
             title: title,
             course: course.rawValue,
-            dietaryType: dietaryType.rawValue,
+            diet: diet.rawValue,
             portions: portions,
             rating: rating,
             creationDate: ISO8601DateFormatter().string(from: creationDate),
@@ -93,7 +93,7 @@ extension RecipeDTO {
         let recipe = Recipe(
             title: title,
             course: Course(rawValue: course) ?? .main,
-            dietaryType: DietaryType(rawValue: dietaryType) ?? .omnivore,
+            diet: Diet(rawValue: diet) ?? .other,
             portions: portions,
             rating: rating,
             creationDate: ISO8601DateFormatter().date(from: creationDate) ?? .now,

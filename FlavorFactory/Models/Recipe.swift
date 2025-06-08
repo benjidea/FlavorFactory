@@ -8,7 +8,7 @@ final class Recipe {
 
     var title: String = ""
     var course: Course = Course.main
-    var dietaryType: DietaryType = DietaryType.omnivore
+    var diet: Diet = Diet.other
     var portions: Int = 1
     var rating: Double?
 
@@ -43,7 +43,7 @@ final class Recipe {
     init(
         title: String = "",
         course: Course = Course.main,
-        dietaryType: DietaryType = DietaryType.omnivore,
+        diet: Diet = Diet.other,
         portions: Int = 1,
         rating: Double? = nil,
         creationDate: Date = .now,
@@ -62,7 +62,7 @@ final class Recipe {
     ) {
         self.title = title
         self.course = course
-        self.dietaryType = dietaryType
+        self.diet = diet
         self.portions = portions
         self.rating = rating
         self.creationDate = creationDate
@@ -95,11 +95,16 @@ enum Course: String, Codable {
     case other
 }
 
-enum DietaryType: String, Codable {
-    case vegetarian
+/// Represents the dietary type of a recipe
+enum Diet: String, Codable {
+    case beef
+    case fish
+    case lamb
+    case pork
+    case poultry
+    case seafood
     case vegan
-    case pescatarian
-    case omnivore
+    case vegetarian
     case other
 }
 
