@@ -6,7 +6,7 @@ struct RecipeRowView: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: Spacing.size1) {
-                FFH3(text: recipe.title)
+                FFH3(recipe.title)
                     .font(.headline)
                 HStack(spacing: Spacing.size2) {
                     FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
