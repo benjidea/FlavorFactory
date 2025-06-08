@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="docs/icons/01_appicon.png" alt="App Icon" width="120" />
+</div>
+
 # FlavorFactory
 
 **FlavorFactory** is an iOS and iPadOS app for managing and viewing recipes. The app is designed for home cooks and food enthusiasts who want a privacy-friendly and extensible recipe viewer.
@@ -57,4 +61,10 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 ## Contact
-For questions, feedback, or collaboration, open an issue or contact the maintainer via GitHub. 
+For questions, feedback, or collaboration, open an issue or contact the maintainer via GitHub.
+
+## Screenshots
+
+| Rezept-Detailansicht | Schritt-Detailansicht |
+|----------------------|----------------------|
+| ![Recipe Detail](docs/screenshots/01_recipe_detail.png) | ![Recipe Step Detail](docs/screenshots/02_recipe_detail_step.png) | 
