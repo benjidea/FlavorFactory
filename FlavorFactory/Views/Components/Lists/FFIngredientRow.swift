@@ -6,7 +6,7 @@ struct FFIngredientRow: View {
 
     var body: some View {
         HStack {
-            Text(ingredient.title)
+            FFText(ingredient.title)
             Spacer()
             if ingredient.amount > 0 {
                 amount
@@ -17,10 +17,10 @@ struct FFIngredientRow: View {
 
     @ViewBuilder
     private var amount: some View {
-        Text(amountText)
+        FFText(amountText)
             .foregroundStyle(.secondary)
         if let unit = ingredient.unit {
-            Text(unit.rawValue)
+            FFText(unit.rawValue)
                 .foregroundStyle(.secondary)
         }
     }

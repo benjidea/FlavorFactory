@@ -74,11 +74,11 @@ struct TagWrapLayout: Layout {
 
 #Preview {
     VStack(alignment: .leading, spacing: Spacing.size3) {
-        Text("Flow Layout (Wrapping):")
+        FFText("Flow Layout (Wrapping):")
         FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .flow)
-        Text("Scroll Layout (Horizontal, default Inset):")
+        FFText("Scroll Layout (Horizontal, default Inset):")
         FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .scroll())
-        Text("Scroll Layout (Horizontal, large Inset):")
+        FFText("Scroll Layout (Horizontal, large Inset):")
         FFTagList(tags: ["Pasta", "Italienisch", "Schnell", "Vegetarisch", "Low Carb", "Vegan", "Glutenfrei"], layout: .scroll(horizontalInset: Spacing.size4))
     }
     .padding(Spacing.size3)

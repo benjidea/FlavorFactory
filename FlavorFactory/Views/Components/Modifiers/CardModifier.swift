@@ -19,12 +19,12 @@ extension View {
 
 #Preview {
     VStack(spacing: Spacing.size3) {
-        Text("Simple Card Content")
+        FFText("Simple Card Content")
             .card()
 
         VStack(alignment: .leading, spacing: Spacing.size2) {
-            Text("Card with Header").font(.headline)
-            Text("Some content here")
+            FFText("Card with Header").font(.headline)
+            FFText("Some content here")
         }
         .card()
     }

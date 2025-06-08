@@ -6,8 +6,8 @@ struct FFStepIngredientRow: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 6) {
-            Text("•")
-            Text(ingredient.title)
+            FFText("•")
+            FFText(ingredient.title)
                 .fontWeight(.medium)
             if ingredient.amount > 0 {
                 amount
@@ -18,10 +18,10 @@ struct FFStepIngredientRow: View {
 
     @ViewBuilder
     private var amount: some View {
-        Text(amountText)
+        FFText(amountText)
             .foregroundStyle(.secondary)
         if let unit = ingredient.unit {
-            Text(unit.rawValue)
+            FFText(unit.rawValue)
                 .foregroundStyle(.secondary)
         }
     }

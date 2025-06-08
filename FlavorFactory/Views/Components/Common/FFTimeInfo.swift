@@ -5,10 +5,9 @@ struct FFTimeInfo: View {
     let time: Int
     var body: some View {
         VStack {
-            Text(title)
-                .font(.caption)
+            FFText(title, style: .caption)
                 .foregroundStyle(.secondary)
-            Text("\(time) Min")
+            FFText("\(time) Min")
                 .font(.headline)
         }
     }

@@ -7,9 +7,8 @@ struct FFIconLabel: View {
         HStack(spacing: 4) {
             Image(systemName: systemImage)
                 .font(.caption)
-            Text(text)
+            FFText(text, style: .caption)
         }
-        .font(.caption)
     }
 }
 

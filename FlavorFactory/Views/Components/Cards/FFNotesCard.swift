@@ -6,7 +6,7 @@ struct FFNotesCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.size2) {
             FFSectionHeader(text: "Notizen")
-            Text(notes)
+            FFText(notes)
                 .foregroundStyle(.secondary)
         }
         .card()

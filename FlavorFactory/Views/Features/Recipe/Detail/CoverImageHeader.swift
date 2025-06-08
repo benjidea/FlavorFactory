@@ -61,8 +61,7 @@ struct CoverImageHeader: View {
 
     private var text: some View {
         VStack(alignment: .leading, spacing: textSpacing) {
-            Text(recipe.title)
-                .font(.largeTitle).bold()
+            FFTitle(recipe.title)
                 .foregroundStyle(.white)
                 .shadow(radius: textShadowRadius)
             HStack(spacing: iconSpacing) {

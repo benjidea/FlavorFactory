@@ -7,7 +7,6 @@ struct RecipeRowView: View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: Spacing.size1) {
                 FFH3(recipe.title)
-                    .font(.headline)
                 HStack(spacing: Spacing.size2) {
                     FFIconLabel(systemImage: "fork.knife", text: recipe.course.rawValue)
                     HStack(spacing: Spacing.size1) {
@@ -24,7 +23,7 @@ struct RecipeRowView: View {
             }
             Spacer()
             if let rating = recipe.rating {
-                Text(String(format: "%.1f", rating))
+                FFText(String(format: "%.1f", rating))
                     .font(.headline)
                     .foregroundStyle(.orange)
             }

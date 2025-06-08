@@ -19,8 +19,7 @@ struct RecipeIngredientsSection: View {
                             Image(systemName: "minus.circle.fill")
                                 .foregroundStyle(.gray)
                         }
-                        Text("\(portions) Portionen")
-                            .font(.subheadline)
+                        FFText("\(portions) Portionen", style: .caption)
                             .foregroundStyle(.secondary)
                         Button(action: onPortionsIncrease) {
                             Image(systemName: "plus.circle.fill")

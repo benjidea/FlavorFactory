@@ -19,7 +19,7 @@ struct ContentView: View {
             if let recipe = selectedRecipe {
                 RecipeDetailView(recipe: recipe)
             } else {
-                Text("Wähle ein Rezept aus")
+                FFText("Wähle ein Rezept aus")
                     .navigationTitle("Rezept")
             }
         }

@@ -77,7 +77,7 @@ struct RecipeListView: View {
         .alert("Import fehlgeschlagen", isPresented: Binding(get: { importError != nil }, set: { _ in importError = nil })) {
             Button("OK", role: .cancel) {}
         } message: {
-            Text(importError?.localizedDescription ?? "Unbekannter Fehler")
+            FFText(importError?.localizedDescription ?? "Unbekannter Fehler")
         }
         .confirmationDialog(
             "Rezept löschen?",
@@ -92,7 +92,7 @@ struct RecipeListView: View {
             Button("Abbrechen", role: .cancel) {}
         } message: {
             if let recipe = recipeToDelete {
-                Text("Möchtest du das Rezept '\(recipe.title)' wirklich löschen?")
+                FFText("Möchtest du das Rezept '\(recipe.title)' wirklich löschen?")
             }
         }
     }

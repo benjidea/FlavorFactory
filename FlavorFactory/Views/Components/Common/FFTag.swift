@@ -3,8 +3,7 @@ import SwiftUI
 struct FFTag: View {
     let text: String
     var body: some View {
-        Text(text)
-            .font(.caption)
+        FFText(text, style: .caption)
             .padding(.horizontal, Spacing.size3)
             .padding(.vertical, Spacing.size1)
             .background(Color.secondary.opacity(0.15))

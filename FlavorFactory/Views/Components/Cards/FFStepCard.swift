@@ -7,7 +7,7 @@ struct FFStepCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 8) {
-                Text("Schritt \(step.order)")
+                FFText("Schritt \(step.order)")
                     .font(.subheadline)
                     .bold()
                     .foregroundStyle(.orange)
@@ -23,9 +23,7 @@ struct FFStepCard: View {
                         .cornerRadius(8)
                 }
             #endif
-            Text(step.text)
-                .font(.body)
-                .foregroundStyle(.primary)
+            FFText(step.text)
             if let ingredients = step.ingredients, !ingredients.isEmpty {
                 VStack(alignment: .leading, spacing: 2) {
                     ForEach(ingredients) { ingredient in
