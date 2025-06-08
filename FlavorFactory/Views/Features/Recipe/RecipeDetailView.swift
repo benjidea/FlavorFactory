@@ -44,7 +44,7 @@ struct RecipeDetailView: View {
                     )
 
                     if let notes = recipe.notes, !notes.isEmpty {
-                        FFNotesBox(notes: notes)
+                        FFNotesCard(notes: notes)
                     }
                 }
                 .padding(Spacing.size3)

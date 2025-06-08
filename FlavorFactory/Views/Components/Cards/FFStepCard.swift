@@ -3,6 +3,7 @@ import SwiftUI
 struct FFStepCard: View {
     let step: Step
     var scaleFactor: Double = 1.0
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 8) {
@@ -34,9 +35,7 @@ struct FFStepCard: View {
                 .padding(.leading, Spacing.size1)
             }
         }
-        .padding(Spacing.size3)
-        .background(Color.secondary.opacity(0.08))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .card()
     }
 }
 
